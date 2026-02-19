@@ -23,8 +23,7 @@ public class CloudController : MonoBehaviour {
 
 
             // Put the cloud somewhere using a random Vector3 param (in Cloud.cs)
-            Vector3 startPos = new Vector3(Random.Range(-20f, 20f), Random.Range(5f, 20f), Random.Range(-20f, 20f));
-            cloud.Initialize(startPos);
+            cloud.Initialize(new Vector3(Random.Range(-20f, 20f), Random.Range(5f, 20f), Random.Range(-20f, 20f)));
  
             clouds[i] = cloud;
         }

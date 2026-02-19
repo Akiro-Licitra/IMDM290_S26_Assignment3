@@ -6,23 +6,24 @@ public class Cloud : MonoBehaviour {
     private float x_offset, y_offset, z_offset;
 
     /* Feel free to change these */
-    public float wanderRadius = 3f;
-    public float noiseSpeed = 0.2f;
+    public float move_radius = 3f;
+    public float move_speed = 0.2f;
     ///////////////////////////////
 
     public void Initialize(Vector3 startPosition){
+
+        // Where does the ball start?
         origin = startPosition;
         transform.position = startPosition;
 
-        // How much can this ball move?
+        // How does the ball move?
         x_offset = Random.Range(0f, 999f);
         y_offset = Random.Range(0f, 999f);
         z_offset = Random.Range(0f, 999f);
     }
 
     void Update(){
-        // Sample Perlin noise at slowly-advancing time values, unique per ball
-        float t = Time.time * noiseSpeed;
+        float t = Time.time * move_speed;
 
 
         /* Perlin Noise: 
@@ -35,6 +36,6 @@ public class Cloud : MonoBehaviour {
         float dy = (Mathf.PerlinNoise(y_offset + 100f, t) - 0.5f) * 2f;
         float dz = (Mathf.PerlinNoise(z_offset + 200f, t) - 0.5f) * 2f;
 
-        transform.position = origin + new Vector3(dx, dy, dz) * wanderRadius;
+        transform.position = origin + new Vector3(dx, dy, dz) * move_radius;
     }
 }
